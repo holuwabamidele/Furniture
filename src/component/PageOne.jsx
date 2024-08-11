@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import pic1 from "../assets/furniture pic1.webp";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const PageOne = () => {
   return (
@@ -11,11 +13,19 @@ const PageOne = () => {
             LUXURY <br /> FURNITURE
           </h1>
           <ButtonHold>
-            <main>
-              <button>GO TO SHOP</button>
-            </main>
+            <Link to="/shop">
+              <main>
+                <button>GO TO SHOP</button>
+              </main>
+            </Link>
             <section>
-              <button>SEE COLLECTION</button>
+              <button
+                onClick={() => {
+                  Swal.fire("Update coming soon!");
+                }}
+              >
+                SEE COLLECTION
+              </button>
             </section>
           </ButtonHold>
         </Content>

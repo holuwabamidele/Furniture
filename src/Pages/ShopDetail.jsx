@@ -1,32 +1,31 @@
-import styled from "styled-components";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { basedb } from "../Base";
 
 const ShopDetail = () => {
+  const { id } = useParams();
+  const [getDescription, setGetDescription] = useState({});
+
+  // console.log(id);
+
+  const getDetail = async (id) => {
+    const myData = await getDoc(doc(basedb, "furniture", id));
+    setGetDescription({ ...myData.data(), id: myData.id });
+  };
+
+  useEffect(() => {
+    getDetail(id);
+  }, [id]);
+
+  console.log(getDescription);
   return (
-    <Container>
-      <Wrapper>
-        <Card>
-          <img src="" alt="" />
-          <h3></h3>
-          <p></p>
-        </Card>
-      </Wrapper>
-    </Container>
+    <div>
+      <img src={getDescription.avatar} width="100%" height="400" alt="" />
+      <h1>Title:{getDescription.title}</h1>
+      <p>Description:{getDescription.description}</p>
+    </div>
   );
 };
 
 export default ShopDetail;
-const Container = styled.div`
-  min-height: calc(100vh - 50px);
-  margin-top: 50px;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Wrapper = styled.div`
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const Card = styled.div``;

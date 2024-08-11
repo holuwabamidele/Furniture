@@ -78,7 +78,7 @@ const Footer = () => {
 export default Footer;
 
 const Container = styled.div`
-  margin-bottom: 100px;
+  margin: 50px 50px;
   display: flex;
   justify-content: center;
   /* align-items: center; */
