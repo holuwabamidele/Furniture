@@ -9,6 +9,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { basedb, baseStorage } from "../Base";
 import { useNavigate } from "react-router-dom";
+import bg from "../assets/furniturelogo.svg";
+import Swal from "sweetalert2";
 
 const NewEntry = () => {
   const [title, setTitle] = useState("");
@@ -39,7 +41,10 @@ const NewEntry = () => {
       description,
       avatar: avatarURL,
     });
-    alert("Data Submitted");
+    Swal.fire({
+      title: "Data Submitted!",
+      icon: "success",
+    });
     navigate("/shop");
 
     setTitle("");
@@ -83,6 +88,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: red; */
+  background-image: url(${bg});
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 const Wrapper = styled.div``;
 const Link = styled.div`
@@ -103,7 +113,7 @@ const Link = styled.div`
   input {
     width: 300px;
     background-color: #eee;
-    height: 20px;
+    height: 40px;
     outline: none;
     border: none;
   }
