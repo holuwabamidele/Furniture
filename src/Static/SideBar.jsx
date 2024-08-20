@@ -14,7 +14,7 @@ const SideBar = () => {
     <Container>
       <Wrapper>
         <Navigation>
-          <Link to="/shop">
+          <Link to="/shop" style={{ textDecoration: "none" }}>
             <div>
               <nav>
                 <FaShoppingCart />

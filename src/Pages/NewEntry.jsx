@@ -53,12 +53,17 @@ const NewEntry = () => {
 
   return (
     <Container>
-      <Wrapper>
+      <Wrapper onSubmit={postData}>
         <Link to="/new">
-          <input type="file" onChange={(e) => setAvatar(e.target.files[0])()} />
+          <input
+            type="file"
+            required
+            onChange={(e) => setAvatar(e.target.files[0])()}
+          />
           <br />
           <br />
           <input
+            required
             type="Title"
             placeholder="Item Title"
             value={title}
@@ -67,12 +72,13 @@ const NewEntry = () => {
           <br />
           <br />
           <textarea
+            required
             placeholder="Enter Item Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
           <br />
-          <button onClick={postData}>SUBMIT</button>
+          <button type="submit">SUBMIT</button>
         </Link>
       </Wrapper>
     </Container>
@@ -94,7 +100,7 @@ const Container = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
 `;
-const Wrapper = styled.div``;
+const Wrapper = styled.form``;
 const Link = styled.div`
   button {
     width: 100px;
